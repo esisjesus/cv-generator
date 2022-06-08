@@ -1,7 +1,11 @@
 import React, {useState} from 'react'
-import './Input.css'
+import ExperienceInput from '../ExperienceInput/ExperienceInput'
+import ContactInput from '../ContactInput/ContactInput'
+import EducationInput from '../EducationInput/EducationInput'
+import SkillsInput from '../SkillsInput/SkillsInput'
+import './InputController.css'
 
-export default function Input({section, maxInputs}) {
+export default function InputController({section, maxInputs, type}) {
 
     const [numberOfInputs, setNumberOfInputs] = useState([])
 
@@ -26,13 +30,13 @@ export default function Input({section, maxInputs}) {
                 numberOfInputs.length > 0 &&
                 numberOfInputs.map(el =>{
                     return(
-                        <input type="text" id={section} key={el}/>
+                        <SkillsInput/>
                     )
                 })
             }
-            <input key="x" type="text" id={section}/>
+            
             {
-                maxInputs > 0 && <button onClick={addNewInput}>+</button>
+                numberOfInputs.length < maxInputs-1 && <button onClick={addNewInput}>+</button>
             }
             
         </div>
